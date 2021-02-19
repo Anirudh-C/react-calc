@@ -12,7 +12,7 @@ pipeline {
         sh 'docker build -t calculator:dev --no-cache .'
       }
     }
-    stage('Calculator Tests') {
+    stage('Docker Test') {
       steps {
         sh 'docker run --rm -v ${PWD}:/app -v /app/node_modules calculator:dev'
       }
