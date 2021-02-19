@@ -4,7 +4,7 @@
   "description": "A scientific calculator built using React and a host of other tools as part of my CS 816 Software  Production Engineering course assignment.",
   "main": "index.js",
   "scripts": {
-    "start": "parcel index.html --open",
+    "start": "parcel index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,8 +19,12 @@
   },
   "homepage": "https://github.com/Anirudh-C/react-calc#readme",
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
+  },
+  "resolutions": {
+    "node-forge": "0.10.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.12.17",
