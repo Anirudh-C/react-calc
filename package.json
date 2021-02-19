@@ -1,0 +1,30 @@
+{
+  "name": "calculator",
+  "version": "1.0.0",
+  "description": "A scientific calculator built using React and a host of other tools as part of my CS 816 Software  Production Engineering course assignment.",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html --open",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anirudh-C/react-calc.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Anirudh-C/react-calc/issues"
+  },
+  "homepage": "https://github.com/Anirudh-C/react-calc#readme",
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.12.17",
+    "@babel/preset-react": "^7.12.13",
+    "parcel-bundler": "^1.12.4"
+  }
+}
