@@ -1,7 +1,6 @@
 pipeline {
   agent {
     dockerfile {
-      label 'calculator:dev'
       args '--rm --user $(id -u):$(id -g) -v ${PWD}:/app -v /app/node_modules'
     }
   }
