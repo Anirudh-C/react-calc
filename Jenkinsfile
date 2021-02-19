@@ -1,7 +1,7 @@
 pipeline {
   agent {
     dockerfile {
-      args '--rm --user $(id -u):$(id -g) -v ${PWD}:/app -v /app/node_modules'
+      args '--rm -v ${PWD}:/app -v /app/node_modules'
     }
   }
   stages {
