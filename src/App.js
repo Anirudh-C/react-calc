@@ -1,7 +1,30 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 
-const App = () => (
-    <h1>Scientific Calculator</h1>
-);
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
-export default App;
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+}));
+
+export default function App() {
+  const classes = useStyles();
+
+  return (
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <div className={classes.paper}>
+        <Typography component="h1" variant="h4">
+          Scientific Calculator
+        </Typography>
+      </div>
+    </Container>
+  );
+}
