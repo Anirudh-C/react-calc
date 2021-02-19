@@ -1,14 +1,21 @@
 pipeline {
+  agent { dockerfile true }
   stages {
     stage('Environment') {
-      sh 'git --version'
-      sh 'docker -v'
+      steps {
+        sh 'git --version'
+        sh 'docker -v'
+      }
     }
     stage('Docker Build') {
-      sh 'docker build -t calculator:dev --no-cache .'
+      steps {
+        sh 'docker build -t calculator:dev --no-cache .'
+      }
     }
     stage('Calculator Tests') {
-      sh 'docker run --rm -v ${PWD}:/app -v /app/node_modules calculator:dev'
+      steps {
+        sh 'docker run --rm -v ${PWD}:/app -v /app/node_modules calculator:dev'
+      }
     }
   }
 }
