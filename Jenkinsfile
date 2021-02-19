@@ -1,7 +1,7 @@
 pipeline {
   agent {
     dockerfile {
-      args '--rm -v ${PWD}:/app -v /app/node_modules'
+      additionalBuildArgs '-t calculator:dev'
     }
   }
   stages {
