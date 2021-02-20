@@ -3,8 +3,10 @@ node {
     def calculatorDev = docker.build("calculator:dev")
   }
   stage ('Test') {
-    calculatorDev.inside("--rm -v ${PWD}:/app -v /app/node_modules -p 3000:1234 calculator:dev") {
-      sh 'npm run test'
+    steps {
+      calculatorDev.inside("--rm -v ${PWD}:/app -v /app/node_modules -p 3000:1234 calculator:dev") {
+        sh 'npm run test'
+      }
     }
   }
 }
