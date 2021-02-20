@@ -10,4 +10,4 @@ RUN npm install
 
 COPY . ./
 
-CMD ["./start-dev.sh"]
+CMD ["./scripts/start-dev.sh"]
