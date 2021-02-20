@@ -11,10 +11,11 @@ pipeline {
         sh 'npm test'
       }
     }
-    stage ('Run Container') {
-      agent { dockerfile true }
+    stage ('Build Container') {
       steps {
-        sh 'docker run -it --rm -detach -p 3000:1234 calculator:dev'
+        script {
+          docker.build "calculator:dev"
+        }
       }
     }
   }
