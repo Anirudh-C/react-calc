@@ -1,14 +1,11 @@
-pipeline {
-  agent {
-    dockerfile {
-      additionalBuildArgs '-t calculator:dev'
-    }
+node {
+  stage('Build') {
+    def calculatorDev = docker.build("calculator:dev")
   }
-  stages {
-    stage('Test') {
-      steps {
-        sh 'npm run test'
-      }
+  stage ('Test') {
+    calculatorDev.inside("--rm -v ${PWD}:/app -v /app/node_modules -p 3000:1234 calculator:dev") {
+      sh 'npm run test'
     }
   }
 }
+      
