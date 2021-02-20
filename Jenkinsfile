@@ -1,25 +1,17 @@
 pipeline {
-  environment {
-    calculatorDev = ''
-  }
-  agent any
-  stages {
-    stage('Build') {
-      steps {
-        script {
-          calculatorDev = docker.build "calculator:dev"
-        }   
-      }
+  agent {
+    docker {
+      image 'calculator:dev'
+      args '-v ${PWD}:/app -v /app/node_modules -p 3000:1234'
     }
-    stage ('Test') {
+  }
+  stages {
+    stage('Test') {
       steps {
-        script {
-          calculatorDev.withRun("-v ${PWD}:/app -v /app/node_modules -p 3000:1234") {
-            sh 'npm run test'
-          }
-        }
+        sh './jenkins/test.sh'
       }
     }
   }
 }
+
       
