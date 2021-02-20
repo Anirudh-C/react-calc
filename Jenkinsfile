@@ -1,4 +1,7 @@
 pipeline {
+  environment {
+    CI = 'true'
+  }
   agent {
     docker {
       image 'calculator:dev'
