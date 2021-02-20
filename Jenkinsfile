@@ -4,8 +4,7 @@ pipeline {
     HOME = '.'
   }
   agent {
-    docker {
-      image 'calculator:dev'
+    dockerfile {
       args '-v ${PWD}:/app -v /app/node_modules -p 3000:1234'
     }
   }
