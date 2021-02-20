@@ -3,23 +3,27 @@ pipeline {
     CI = 'true'
     HOME = '.'
   }
-  agent {
-    dockerfile {
-      args '-v ${PWD}:/app -v /app/node_modules -p 3000:1234'
-    }
-  }
+  agent any
   stages {
-    stage ('Build') {
+    stage ('Build and Test') {
       steps {
         sh 'npm install'
+        sh 'npm test'
       }
     }
-    stage('Test') {
+    stage ('Build Container') {
+      agent { dockerfile true }
       steps {
-        sh './scripts/test.sh'
+        script {
+          def reactCalcImg = docker.build("calculator:dev")
+        }
+      }
+    }
+    stage ('Run Container') {
+      agent any
+      steps {
+        sh 'docker run -it --rm -detach -p 3000:1234 calculator:dev'
       }
     }
   }
 }
-
-      
