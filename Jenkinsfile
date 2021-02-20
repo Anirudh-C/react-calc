@@ -1,7 +1,6 @@
 pipeline {
   environment {
-    CI = 'true'
-    HOME = '.'
+    calculatorImg
   }
   agent any
   stages {
@@ -14,7 +13,21 @@ pipeline {
     stage ('Build Container') {
       steps {
         script {
-          docker.build "calculator:dev"
+          calculatorImg = docker.build "strangeloop1710/react-calc:latest"
+        }
+      }
+    }
+    stage ('Cleanup') {
+      steps {
+        sh './scripts/cleanup-docker.sh'
+      }
+    }
+    stage ('Push Container') {
+      steps {
+        script {
+          docker.withRegistry('', 'docker-hub-jenkins') {
+            calculatorImg.push()
+          }
         }
       }
     }
