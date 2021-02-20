@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    calculatorImg
+    calculatorImg = ''
   }
   agent any
   stages {
