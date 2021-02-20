@@ -1,6 +1,7 @@
 pipeline {
   environment {
     CI = 'true'
+    HOME = '.'
   }
   agent {
     docker {
