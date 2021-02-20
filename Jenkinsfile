@@ -11,16 +11,8 @@ pipeline {
         sh 'npm test'
       }
     }
-    stage ('Build Container') {
-      agent { dockerfile true }
-      steps {
-        script {
-          def reactCalcImg = docker.build("calculator:dev")
-        }
-      }
-    }
     stage ('Run Container') {
-      agent any
+      agent { dockerfile true }
       steps {
         sh 'docker run -it --rm -detach -p 3000:1234 calculator:dev'
       }
