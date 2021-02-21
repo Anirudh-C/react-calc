@@ -1,6 +1,7 @@
 pipeline {
   environment {
     calculatorImg = ''
+    SSH_KEY = credentials('SSH_KEY_ANSIBLE')
   }
   agent any
   stages {
@@ -34,7 +35,7 @@ pipeline {
     stage ('Deploy Container') {
       steps {
         script {
-          sh 'ansible-playbook -i ./deploy/hosts ./deploy/deploy-container.yml'
+          sh 'ansible-playbook --private-key ${SSH_KEY} -i ./deploy/hosts ./deploy/deploy-container.yml'
         }
       }
     }
