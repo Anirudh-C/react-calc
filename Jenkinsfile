@@ -1,6 +1,7 @@
 pipeline {
   environment {
     calculatorImg = ''
+    SSH_CREDS = credentials('ssh-ansible-password')
   }
   agent any
   stages {
@@ -33,7 +34,7 @@ pipeline {
     }
     stage ('Deploy Container') {
       steps {
-        sh 'ansible-playbook -i ./deploy/hosts ./deploy/deploy-container.yml'
+        sh 'ansible-playbook -e \"ansible_ssh_pass=$SSH_CREDS\" -i ./deploy/hosts ./deploy/deploy-container.yml'
       }
     }
   }
