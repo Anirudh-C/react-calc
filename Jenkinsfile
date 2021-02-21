@@ -1,7 +1,6 @@
 pipeline {
   environment {
     calculatorImg = ''
-    SSH_KEY = credentials('SSH_KEY_ANSIBLE')
   }
   agent any
   stages {
