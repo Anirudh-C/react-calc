@@ -33,11 +33,13 @@ pipeline {
       }
     }
     stage ('Deploy Container') {
-      ansiblePlaybook(
-        inventory: './deploy/hosts',
-        credentialsId: 'ssh-ansible',
-        playbook: './deploy/deploy-container.yml'
-      )
+      steps {
+        ansiblePlaybook(
+          inventory: './deploy/hosts',
+          credentialsId: 'ssh-ansible',
+          playbook: './deploy/deploy-container.yml'
+        )
+      }
     }
   }
 }
