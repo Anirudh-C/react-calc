@@ -31,5 +31,12 @@ pipeline {
         }
       }
     }
+    stage ('Deploy Container') {
+      steps {
+        script {
+          sh 'ansible -i ./deploy/hosts ./deploy/deploy-container.yml'
+        }
+      }
+    }
   }
 }
