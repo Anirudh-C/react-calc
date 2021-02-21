@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -24,6 +25,9 @@ export default function App() {
         <Typography component="h1" variant="h4">
           Scientific Calculator
         </Typography>
+        <Button variant="contained" color="primary">
+          Press for Hurray!
+        </Button>
       </div>
     </Container>
   );
