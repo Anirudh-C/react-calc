@@ -4,16 +4,6 @@
   remote_user: strange-loop-server
 
   tasks:
-    - name: Stop running container
-      docker_container:
-        name: react-calc
-        state: stopped
-
-    - name: Prune everything
-      docker_prune:
-        containers: yes
-        images: yes
-
     - name: Pull application image
       docker_image:
         name: strangeloop1710/react-calc
