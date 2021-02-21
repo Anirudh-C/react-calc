@@ -33,11 +33,11 @@ pipeline {
       }
     }
     stage ('Deploy Container') {
-      steps {
-        script {
-          sh 'ansible-playbook --private-key ${SSH_KEY} -i ./deploy/hosts ./deploy/deploy-container.yml'
-        }
-      }
+      ansiblePlaybook(
+        inventory: './deploy/hosts',
+        credentialsId: 'ssh-ansible',
+        playbook: './deploy/deploy-container.yml'
+      )
     }
   }
 }
