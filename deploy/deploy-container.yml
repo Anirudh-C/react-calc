@@ -8,11 +8,12 @@
       docker_image:
         name: strangeloop1710/react-calc
         state: absent
-        force: yes
+        force_absent: yes
 
     - name: Pull latest image
       docker_image:
         name: strangeloop1710/react-calc
+        source: pull
 
     - name: Running application
       docker_container:
