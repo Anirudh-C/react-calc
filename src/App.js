@@ -58,6 +58,9 @@ export default function App() {
               </Typography>
               <CssBaseline />
               <Card className={classes.root} variant="outlined">
+                <Button variant="contained" color="primary">
+                  Press for Hurray!
+                </Button>
               </Card>
             </div>
           </Container>
