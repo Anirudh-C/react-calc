@@ -4,15 +4,21 @@
   remote_user: strange-loop-server
 
   tasks:
-    - name: Pull application image
+    - name: Check if image already exists and delete
       docker_image:
         name: strangeloop1710/react-calc
-        source: pull
+        state: absent
+        force: yes
+
+    - name: Pull latest image
+      docker_image:
+        name: strangeloop1710/react-calc
 
     - name: Running application
       docker_container:
         name: react-calc
         image: strangeloop1710/react-calc
         state: started
+        restart: yes
         ports:
           - "80:80"

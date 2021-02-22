@@ -61,6 +61,9 @@ export default function App() {
                 <Button variant="contained" color="primary">
                   Press for Hurray!
                 </Button>
+                <Button variant="contained" color="primary">
+                  Yoo Hoo!
+                </Button>
               </Card>
             </div>
           </Container>
