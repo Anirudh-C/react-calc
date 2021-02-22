@@ -10,6 +10,11 @@
         state: absent
         force_absent: yes
 
+    - name: Prune all images and containers
+      docker_prune:
+        containers: yes
+        images: yes
+
     - name: Pull latest image
       docker_image:
         name: strangeloop1710/react-calc

@@ -57,8 +57,6 @@ export default function App() {
                 Scientific Calculator
               </Typography>
               <CssBaseline />
-              <Card className={classes.root} variant="outlined">
-              </Card>
             </div>
           </Container>
         </ThemeProvider>
