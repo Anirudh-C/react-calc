@@ -97,6 +97,7 @@ function Layout(props) {
               <FormControlLabel
                 control={<Switch
                            checked={scientific}
+                           color="secondary"
                            onChange={() =>
                                      scientific ? setScientific(false) : setScientific(true)}/>}
                 label={<Typography variant="body2" color="textSecondary">
