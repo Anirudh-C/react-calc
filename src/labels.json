@@ -1,165 +1,156 @@
 {
-  normalGrid:
-  [
-    {
-      rowKey: "row-1",
-      elements:
-      [
-        {
-          key: "key-clr",
-          label: "AC",
-          type: "function"
-        },
-        {
-          key: "key-bkspc",
-          label: "\u232b",
-          type: "function"
-        },
-        {
-          key: "key-mod",
-          label: "%",
-          type: "function"
-        },
-        {
-          key: "key-div",
-          label: "\u00f7",
-          type: "function"
-        }
-      ]
-    },
-    {
-      rowKey: "row-2",
-      elements:
-      [
-        {
-          key: "key-7",
-          label: "7",
-          type: "input"
-        },
-        {
-          key: "key-8",
-          label: "8",
-          type: "input"
-        },
-        {
-          key: "key-9",
-          label: "9",
-          type: "input"
-        },
-        {
-          key: "key-mul",
-          label: "\u2715",
-          type: "function"
-        }
-      ]
-    },
-    {
-      rowKey: "row-3",
-      elements:
-      [
-        {
-          key: "key-4",
-          label: "4",
-          type: "input"
-        },
-        {
-          key: "key-5",
-          label: "5",
-          type: "input"
-        },
-        {
-          key: "key-6",
-          label: "6",
-          type: "input"
-        },
-        {
-          key: "key-sub",
-          label: "-",
-          type: "function"
-        }
-      ]
-    },
-    {
-      rowKey: "row-4",
-      elements:
-      [
-        {
-          key: "key-1",
-          label: "1",
-          type: "input"
-        },
-        {
-          key: "key-2",
-          label: "2",
-          type: "input"
-        },
-        {
-          key: "key-3",
-          label: "3",
-          type: "input"
-        },
-        {
-          key: "key-add",
-          label: "+",
-          type: "function"
-        }
-      ]
-    },
-    {
-      rowKey: "row-5",
-      elements:
-      [
-        {
-          key: "key-point",
-          label: ".",
-          type: "input"
-        },
-        {
-          key: "key-0",
-          label: "0",
-          type: "input"
-        },
-        {
-          key: "key-paren",
-          label: "()",
-          type: "input"
-        },
-        {
-          key: "key-eq",
-          label: "=",
-          type: "result"
-        }
-      ]
-    }
-  ],
-  scientificGrid:
-  [
-    {
-      rowKey: "scientific-row-1",
-      elements:
-      [
-        {
-          key: "key-fact",
-          label: "!",
-          type: "function"
-        },
-        {
-          key: "key-sqrt",
-          label: "\u221a",
-          type: "function"
-        },
-        {
-          key: "key-ln",
-          label: "log",
-          type: "function"
-        },
-        {
-          key: "key-pow",
-          label: "^",
-          type: "function"
-        }
-      ]
-    }
-  ]
+   "normalGrid":[
+      {
+         "rowKey":"row-1",
+         "elements":[
+            {
+               "key":"key-clr",
+               "label":"AC",
+               "type":"function"
+            },
+            {
+               "key":"key-bkspc",
+               "label":"\u232b",
+               "type":"function"
+            },
+            {
+               "key":"key-mod",
+               "label":"%",
+               "type":"function"
+            },
+            {
+               "key":"key-div",
+               "label":"\u00f7",
+               "type":"function"
+            }
+         ]
+      },
+      {
+         "rowKey":"row-2",
+         "elements":[
+            {
+               "key":"key-7",
+               "label":"7",
+               "type":"input"
+            },
+            {
+               "key":"key-8",
+               "label":"8",
+               "type":"input"
+            },
+            {
+               "key":"key-9",
+               "label":"9",
+               "type":"input"
+            },
+            {
+               "key":"key-mul",
+               "label":"\u2715",
+               "type":"function"
+            }
+         ]
+      },
+      {
+         "rowKey":"row-3",
+         "elements":[
+            {
+               "key":"key-4",
+               "label":"4",
+               "type":"input"
+            },
+            {
+               "key":"key-5",
+               "label":"5",
+               "type":"input"
+            },
+            {
+               "key":"key-6",
+               "label":"6",
+               "type":"input"
+            },
+            {
+               "key":"key-sub",
+               "label":"-",
+               "type":"function"
+            }
+         ]
+      },
+      {
+         "rowKey":"row-4",
+         "elements":[
+            {
+               "key":"key-1",
+               "label":"1",
+               "type":"input"
+            },
+            {
+               "key":"key-2",
+               "label":"2",
+               "type":"input"
+            },
+            {
+               "key":"key-3",
+               "label":"3",
+               "type":"input"
+            },
+            {
+               "key":"key-add",
+               "label":"+",
+               "type":"function"
+            }
+         ]
+      },
+      {
+         "rowKey":"row-5",
+         "elements":[
+            {
+               "key":"key-point",
+               "label":".",
+               "type":"input"
+            },
+            {
+               "key":"key-0",
+               "label":"0",
+               "type":"input"
+            },
+            {
+               "key":"key-paren",
+               "label":"()",
+               "type":"input"
+            },
+            {
+               "key":"key-eq",
+               "label":"=",
+               "type":"result"
+            }
+         ]
+      }
+   ],
+   "scientificGrid":[
+      {
+         "rowKey":"scientific-row-1",
+         "elements":[
+            {
+               "key":"key-fact",
+               "label":"!",
+               "type":"function"
+            },
+            {
+               "key":"key-sqrt",
+               "label":"\u221a",
+               "type":"function"
+            },
+            {
+               "key":"key-ln",
+               "label":"log",
+               "type":"function"
+            },
+            {
+               "key":"key-pow",
+               "label":"^",
+               "type":"function"
+            }
+         ]
+      }
+   ]
 }
-
