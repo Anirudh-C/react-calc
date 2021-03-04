@@ -1,3 +1,5 @@
+import { evaluate } from 'mathjs';
+
 function buttonCallback (button, value) {
     if (button["type"] == "result") {
         return value == "" ? "" : parseResult(value);
@@ -18,6 +20,8 @@ function inputUpdate(button, value) {
         else if ((value.slice(-1) != "(") && (value.slice(-1) != ")")) return value + ")";
         else return value + "(";
     }
+    else if (button["key"] == "key-ln") return value + button["label"] + "("
+    else if (button["key"] == "key-sqrt") return value + "sqrt("
     else return value + button["label"];
 }
 
@@ -25,7 +29,7 @@ function parseResult(value) {
     // Replace the division and multiplication symbols
     value = value.replace("\u00f7", "/");
     value = value.replace("\u2715", "*");
-    return eval(value);
+    return evaluate(value);
 }
 
 export default buttonCallback;

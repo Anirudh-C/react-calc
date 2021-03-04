@@ -4,10 +4,10 @@ import buttonCallback from './callbacks.js';
 
 class App extends React.Component {
     render() {
-      const gridLabels = require('./labels.json');
-      return (
-          <Layout grid={gridLabels} callback={buttonCallback}/>
-      );
+        const gridLabels = require('./labels.json');
+        return (
+            <Layout grid={gridLabels} callback={buttonCallback}/>
+        );
     }
 }
 
