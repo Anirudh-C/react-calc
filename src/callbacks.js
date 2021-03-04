@@ -2,10 +2,32 @@ import { evaluate } from 'mathjs';
 
 function buttonCallback (button, value) {
     if (button["type"] == "result") {
-        return value == "" ? "" : parseResult(value);
+        try {
+            return {
+                name: "Result",
+                message: value == "" ? "" : parseResult(value)
+            }
+        }
+        catch(e) {
+            return {
+                name: "EvalError",
+                message: e.message
+            }
+        }
     }
     else {
-        return inputUpdate(button, value);
+        try {
+            return {
+                name: "Result",
+                message: inputUpdate(button, value)
+            }
+        }
+        catch(e) {
+            return {
+                name: "InputError",
+                message: e.message
+            }
+        }
     }
 }
 
@@ -17,7 +39,11 @@ function inputUpdate(button, value) {
     }
     else if (button["key"] == "key-paren") {
         if (value == "") return value + "(";
-        else if ((value.slice(-1) != "(") && (value.slice(-1) != ")")) return value + ")";
+        else if ((value.slice(-1) != "(") && (value.slice(-1) != ")")) {
+            let openCount = value.match(/\(/g);
+            if (openCount == null) return value + "(";
+            else return value + ")";
+        }
         else return value + "(";
     }
     else if (button["key"] == "key-ln") return value + button["label"] + "("

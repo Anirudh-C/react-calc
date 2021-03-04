@@ -9,6 +9,10 @@ import Button from '@material-ui/core/Button';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import Collapse from '@material-ui/core/Collapse';
+import Alert from '@material-ui/lab/Alert';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+import ErrorIcon from '@material-ui/icons/Error';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -27,10 +31,18 @@ const useStyles = makeStyles((theme) => ({
     },
     button: {
         minHeight: "50px"
+    },
+    alert: {
+        marginTop: theme.spacing(2),
+        color: "#bf616a",
+        backgroundColor: "#2e3440"
+    },
+    errorButton: {
+        color: "#bf616a",
     }
 }));
 
-function createGrid(props, classes, value, setter) {
+function createGrid(props, classes, value, inputSetter, errorSetter) {
     let componentGrid = {
         normalGrid: [],
         scientificGrid: []
@@ -46,7 +58,13 @@ function createGrid(props, classes, value, setter) {
                             <Button
                               fullWidth
                               className={classes.button}
-                              onClick={() => setter(props.callback({key, label, type}, value))}
+                              onClick={() => {
+                                  let result = props.callback({key, label, type}, value);
+                                  if (result.name == "Result") inputSetter(result.message);
+                                  else {
+                                      errorSetter(result.name + ": " + result.message);
+                                      inputSetter("");
+                                  }}}
                               variant={type == "function" ? "outlined" : "contained"}
                               color={type == "input" ? "primary" : "secondary"}>
                               {label}
@@ -65,7 +83,13 @@ function createGrid(props, classes, value, setter) {
                             <Button
                               fullWidth
                               className={classes.button}
-                              onClick={() => setter(props.callback({key, label, type}, value))}
+                              onClick={() => {
+                                  let result = props.callback({key, label, type}, value);
+                                  if (result.name == "Result") inputSetter(result.message);
+                                  else {
+                                      errorSetter(result.naem + ": " + result.message);
+                                      inputSetter("");
+                                  }}}
                               variant={type == "function" ? "outlined" : "contained"}
                               color={type == "input" ? "primary" : "secondary"}>
                               {label}
@@ -79,9 +103,10 @@ function createGrid(props, classes, value, setter) {
 function Layout(props) {
     const [input, setInput] = useState("");
     const [scientific, setScientific] = useState(false);
+    const [error, setError] = useState("");
     const classes = useStyles();
 
-    const componentGrid = createGrid(props, classes, input, setInput);
+    const componentGrid = createGrid(props, classes, input, setInput, setError);
 
     return (
         <Container component="main" maxWidth="xs">
@@ -109,6 +134,23 @@ function Layout(props) {
           {componentGrid["normalGrid"]}
           <Collapse in={scientific}>
             {componentGrid["scientificGrid"]}
+          </Collapse>
+          <Collapse in={error != ""}>
+            <Alert
+              className={classes.alert}
+              severity="error"
+              icon={<ErrorIcon className={classes.errorButton}/>}
+              action={
+                  <IconButton
+                    aria-label="close"
+                    color="inherit"
+                    size="small"
+                    onClick={
+                        () => setError("")}>
+                    <CloseIcon fontSize="inherit" />
+                  </IconButton>}>
+              {error}
+            </Alert>
           </Collapse>
         </Container>
     );
