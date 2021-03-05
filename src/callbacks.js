@@ -1,32 +1,36 @@
 import { evaluate } from 'mathjs';
 
-function buttonCallback (button, value) {
+function buttonCallback(button, value) {
     if (button["type"] == "result") {
         try {
             return {
                 name: "Result",
+                input: value,
                 message: value == "" ? "" : parseResult(value)
-            }
+            };
         }
         catch(e) {
             return {
                 name: "EvalError",
+                input: value,
                 message: e.message
-            }
+            };
         }
     }
     else {
         try {
             return {
                 name: "Result",
+                input: value,
                 message: inputUpdate(button, value)
-            }
+            };
         }
         catch(e) {
             return {
                 name: "InputError",
+                input: value,
                 message: e.message
-            }
+            };
         }
     }
 }
@@ -46,8 +50,8 @@ function inputUpdate(button, value) {
         }
         else return value + "(";
     }
-    else if (button["key"] == "key-ln") return value + button["label"] + "("
-    else if (button["key"] == "key-sqrt") return value + "sqrt("
+    else if (button["key"] == "key-ln") return value + button["label"] + "(";
+    else if (button["key"] == "key-sqrt") return value + "sqrt(";
     else return value + button["label"];
 }
 
