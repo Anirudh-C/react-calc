@@ -25,8 +25,8 @@
     "@material-ui/lab": "^4.0.0-alpha.57",
     "@types/react": "^17.0.2",
     "mathjs": "^9.2.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
   },
   "resolutions": {
     "node-forge": "0.10.0"
