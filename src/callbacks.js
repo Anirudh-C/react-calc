@@ -43,9 +43,12 @@ function inputUpdate(button, value) {
     }
     else if (button["key"] == "key-paren") {
         if (value == "") return value + "(";
-        else if ((value.slice(-1) != "(") && (value.slice(-1) != ")")) {
+        else if (value.slice(-1) != "(") {
             let openCount = value.match(/\(/g);
+            let closeCount = value.match(/\)/g);
             if (openCount == null) return value + "(";
+            else if (closeCount == null) return value + ")";
+            else if (openCount.length == closeCount.length) return value + "(";
             else return value + ")";
         }
         else return value + "(";
