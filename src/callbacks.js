@@ -18,7 +18,7 @@ function buttonCallback(button, value, log = true) {
         try {
             let result = {
                 name: "Result",
-                time: curr.toISOString(),
+                time: curr.toISOString().split('.')[0] + 'Z',
                 input: value,
                 message: value == "" ? "" : parseResult(value)
             };
@@ -28,7 +28,7 @@ function buttonCallback(button, value, log = true) {
         catch(e) {
             let result = {
                 name: "EvalError",
-                time: curr.toISOString(),
+                time: curr.toISOString().split('.')[0] + 'Z',
                 input: value,
                 message: e.message
             };
@@ -40,6 +40,7 @@ function buttonCallback(button, value, log = true) {
         try {
             let result = {
                 name: "Result",
+                time: curr.toISOString().split('.')[0] + 'Z',
                 input: value,
                 message: inputUpdate(button, value)
             };
@@ -48,7 +49,7 @@ function buttonCallback(button, value, log = true) {
         catch(e) {
             let result = {
                 name: "InputError",
-                time: curr.toISOString(),
+                time: curr.toISOString().split('.')[0] + 'Z',
                 input: value,
                 message: e.message
             };
@@ -85,7 +86,7 @@ function parseResult(value) {
     // Replace the division and multiplication symbols
     value = value.replace("\u00f7", "/");
     value = value.replace("\u2715", "*");
-    return evaluate(value);
+    return evaluate(value).toString();
 }
 
 export default buttonCallback;
