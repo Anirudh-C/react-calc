@@ -12,7 +12,7 @@ xhr.onreadystatechange = function () {
     }
 };
 
-function buttonCallback(button, value) {
+function buttonCallback(button, value, log = true) {
     var curr = new Date();
     if (button["type"] == "result") {
         try {
@@ -22,7 +22,7 @@ function buttonCallback(button, value) {
                 input: value,
                 message: value == "" ? "" : parseResult(value)
             };
-            xhr.send(JSON.stringify(result));
+            if (log) xhr.send(JSON.stringify(result));
             return result;
         }
         catch(e) {
@@ -32,7 +32,7 @@ function buttonCallback(button, value) {
                 input: value,
                 message: e.message
             };
-            xhr.send(JSON.stringify(result));
+            if (log) xhr.send(JSON.stringify(result));
             return result;
         }
     }
@@ -52,7 +52,7 @@ function buttonCallback(button, value) {
                 input: value,
                 message: e.message
             };
-            xhr.send(JSON.stringify(result));
+            if (log) xhr.send(JSON.stringify(result));
             return result;
         }
     }
