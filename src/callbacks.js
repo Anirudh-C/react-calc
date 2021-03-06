@@ -1,36 +1,59 @@
 import { evaluate } from 'mathjs';
 
+var xhr = new XMLHttpRequest();
+var url = "http://192.168.1.100:8081/logging/log";
+xhr.open("POST", url, true);
+xhr.setRequestHeader("Content-Type", "application/json");
+
+xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+        var json = JSON.parse(xhr.responseText);
+        console.log(json);
+    }
+};
+
 function buttonCallback(button, value) {
+    var curr = new Date();
     if (button["type"] == "result") {
         try {
-            return {
+            let result = {
                 name: "Result",
+                time: curr.toISOString(),
                 input: value,
                 message: value == "" ? "" : parseResult(value)
             };
+            xhr.send(JSON.stringify(result));
+            return result;
         }
         catch(e) {
-            return {
+            let result = {
                 name: "EvalError",
+                time: curr.toISOString(),
                 input: value,
                 message: e.message
             };
+            xhr.send(JSON.stringify(result));
+            return result;
         }
     }
     else {
         try {
-            return {
+            let result = {
                 name: "Result",
                 input: value,
                 message: inputUpdate(button, value)
             };
+            return result;
         }
         catch(e) {
-            return {
+            let result = {
                 name: "InputError",
+                time: curr.toISOString(),
                 input: value,
                 message: e.message
             };
+            xhr.send(JSON.stringify(result));
+            return result;
         }
     }
 }
