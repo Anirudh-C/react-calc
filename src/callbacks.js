@@ -1,16 +1,21 @@
 import { evaluate } from 'mathjs';
 
-var xhr = new XMLHttpRequest();
 var url = "http://192.168.1.100:8081/logging/log";
-xhr.open("POST", url, true);
-xhr.setRequestHeader("Content-Type", "application/json");
 
-xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-        var json = JSON.parse(xhr.responseText);
-        console.log(json);
-    }
-};
+function logger(log, url) {
+    var xhr = new XMLHttpRequest();
+
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var json = JSON.parse(xhr.responseText);
+            console.log(json);
+        }
+    };
+    xhr.send(JSON.stringify(log));
+}
 
 function buttonCallback(button, value, log = true) {
     var curr = new Date();
@@ -22,7 +27,7 @@ function buttonCallback(button, value, log = true) {
                 input: value,
                 message: value == "" ? "" : parseResult(value)
             };
-            if (log) xhr.send(JSON.stringify(result));
+            if (log) logger(result, url);
             return result;
         }
         catch(e) {
@@ -32,7 +37,7 @@ function buttonCallback(button, value, log = true) {
                 input: value,
                 message: e.message
             };
-            if (log) xhr.send(JSON.stringify(result));
+            if (log) logger(result, url);
             return result;
         }
     }
@@ -53,7 +58,7 @@ function buttonCallback(button, value, log = true) {
                 input: value,
                 message: e.message
             };
-            if (log) xhr.send(JSON.stringify(result));
+            if (log) logger(result, url);
             return result;
         }
     }
