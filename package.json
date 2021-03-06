@@ -24,6 +24,8 @@
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.57",
     "@types/react": "^17.0.2",
+    "express": "^4.17.1",
+    "express-json-validator-middleware": "^2.1.1",
     "mathjs": "^9.2.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0"
