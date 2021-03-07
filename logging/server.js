@@ -54,13 +54,15 @@ app.get('/logging', (req, res) => {
 app.post('/logging/log',
          validate({ body : logSchema }),
          (req, res, next) => {
+             req.body.time = (new Date(req.body.time)).toLocaleString();
              fs.appendFile(__dirname + '/' + 'logs.json', JSON.stringify(req.body),
                            (err) => {
                                if (err) throw err;
-                               console.log("Logged!");
+                               console.log(req.body.time + " Logged!");
                            });
              res.json({
-                 message: "Logged!"
+                 message: "Logged!",
+                 log: req.body
              });
 
              next();
@@ -69,3 +71,4 @@ app.post('/logging/log',
 app.use(validationErrorMiddleware);
 
 app.listen(8081);
+console.log("Started logger...");
