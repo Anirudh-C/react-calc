@@ -1,3 +1,4 @@
+logging/
 node_modules/
 .dockerignore
 Dockerfile
