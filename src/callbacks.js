@@ -134,8 +134,10 @@ function inputUpdate(button, value) {
 
 function parseResult(value) {
     // Replace the division and multiplication symbols
-    value = value.replace("\u00f7", "/");
-    value = value.replace("\u2715", "*");
+    let divRegex = new RegExp("\u00f7", "g");
+    let mulRegex = new RegExp("\u2715", "g");
+    value = value.replace(divRegex, "/");
+    value = value.replace(mulRegex, "*");
     return evaluate(value).toString();
 }
 
