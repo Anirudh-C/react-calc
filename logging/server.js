@@ -55,7 +55,7 @@ app.post('/logging/log',
          validate({ body : logSchema }),
          (req, res, next) => {
              req.body.time = (new Date(req.body.time)).toLocaleString();
-             fs.appendFile(__dirname + '/' + 'logs.json', JSON.stringify(req.body),
+             fs.appendFile(__dirname + '/' + 'logs.json', JSON.stringify(req.body) + "\n",
                            (err) => {
                                if (err) throw err;
                                console.log(req.body.time + " Logged!");

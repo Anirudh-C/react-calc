@@ -2,3 +2,4 @@
 node_modules/
 dist/
 logging/logs.json
+*.conf
